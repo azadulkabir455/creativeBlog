@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;700;800;900&display=swap');
+
+
+// Global Variables
+$fontFamily: 'Nunito Sans', sans-serif;
+$primaryColor: #EB7E84;
+$secondaryColor: #FFD2D1;
+$primaryColorDark: #F8777C;
+$titleColor: #0e1b47;
+$paragraphColor: #090606;
+$white: #fff;
+$black: #000;
+$transparent: rgba(0, 0, 0, 0);
+
+
+// Global settings
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: $titleColor;
+    color: #fff;
+
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: $secondaryColor;
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $primaryColorDark;
+    border-radius: 10px;
+}
+
+body {
+    font-family: $fontFamily;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin: 0;
+}
+
+// Global fonts
+@mixin h1 {
+    font-family: $fontFamily;
+    font-size: 90px;
+    line-height: 90px;
+    font-weight: 800;
+    text-transform: capitalize;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 76px;
+        line-height: 90px;
+    }
+
+    @media only screen and (max-width: 992px) {
+        font-size: 50px;
+        line-height: 66px;
+    }
+}
+
+@mixin h2 {
+    font-family: $fontFamily;
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 65px;
+    text-transform: capitalize;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 34px;
+        line-height: 44px;
+    }
+}
+
+@mixin h3 {
+    font-family: $fontFamily;
+    font-size: 43px;
+    line-height: 48px;
+    font-weight: 800;
+    text-transform: capitalize;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+@mixin h4 {
+    font-family: $fontFamily;
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 700;
+    text-transform: capitalize;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 26px;
+        line-height: 35px;
+    }
+}
+
+@mixin h5 {
+    font-family: $fontFamily;
+    font-size: 24px;
+    line-height: 33px;
+    font-weight: 700;
+    text-transform: uppercase;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
+
+@mixin subTitle {
+    font-family: $fontFamily;
+    font-size: 24px;
+    line-height: 33px;
+    font-weight: 700;
+    text-transform: capitalize;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+@mixin preHeader {
+    font-family: $fontFamily;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+@mixin buttonText {
+    font-family: $fontFamily;
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .05;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 14px;
+        line-height: 19px;
+    }
+}
+
+@mixin paragraphFont {
+    font-family: $fontFamily;
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 400;
+    text-transform: normal;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 16px;
+        line-height: 26px;
+    }
+}
+
+@mixin menuText {
+    font-family: $fontFamily;
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 700;
+    text-transform: normal;
+    @content;
+
+    @media only screen and (max-width: 992px) {
+        font-size: 18px;
+        line-height: 30px;
+    }
+}
+
+
+// Global Classes
+
+%transition {
+    transition: all .3s linear;
+}
