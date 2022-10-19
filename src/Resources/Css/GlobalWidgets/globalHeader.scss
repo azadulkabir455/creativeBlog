@@ -1,8 +1,88 @@
 @import "../global.scss";
 
-#light.navbar{
-    background-color: #ddd;
+.myNavbar.navbar {
+    padding: 20px 0;
+
+    .navbar-brand {
+        padding: 0;
+
+        @include subTitle {
+            text-transform: uppercase;
+            color: $titleColor;
+        }
+    }
+
+    .navbar-toggler {
+        border: 0;
+        padding: 0;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+
+        .nav-link {
+            @include menuText {
+                color: transparentize($paragraphColor, .3);
+                position: relative;
+            }
+
+            padding: 0 !important;
+            margin-right:20px;
+
+            &:after,
+            &:before {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 1px;
+                background-color: $primaryColor;
+                @extend %transition;
+            }
+
+            &:after {
+                bottom: 0;
+                left: 0
+            }
+
+            &:before {
+                top: 0;
+                right: 0;
+            }
+
+            &:hover:after,
+            &:hover:before {
+                width: 100%;
+            }
+        }
+    }
+
+    .menuButton {
+        @extend %globalButton;
+
+        @media only screen and (max-width: 992px) {
+            margin-top: 10px;
+        }
+    }
 }
-#dark.navbar {
-    background-color: #000;
+
+// Theming CSS
+#dark.myNavbar.navbar {
+    background-color: $themeLightDark;
+
+    .navbar-brand {
+        color: $deemWhite
+    }
+    .navbar-toggler {
+        filter:invert(1);
+    }
+    .nav-item {
+        .nav-link {
+            color: transparentize($deemWhite, .2)
+        }
+    }
 }

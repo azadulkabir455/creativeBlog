@@ -8,9 +8,9 @@ $secondaryColor: #FFD2D1;
 $primaryColorDark: #F8777C;
 $titleColor: #0e1b47;
 $paragraphColor: #090606;
-$white: #fff;
-$black: #000;
-$transparent: rgba(0, 0, 0, 0);
+$themeLightDark: #181818; 
+$themeDeepDark: #000000;
+$deemWhite: #fff;
 
 
 // Global settings
@@ -165,11 +165,11 @@ p {
 
 @mixin buttonText {
     font-family: $fontFamily;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 27px;
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: .05;
+    letter-spacing: .5px;
     @content;
 
     @media only screen and (max-width: 992px) {
@@ -194,14 +194,14 @@ p {
 
 @mixin menuText {
     font-family: $fontFamily;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 27px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: normal;
     @content;
 
     @media only screen and (max-width: 992px) {
-        font-size: 18px;
+        font-size: 14px;
         line-height: 30px;
     }
 }
@@ -211,4 +211,41 @@ p {
 
 %transition {
     transition: all .3s linear;
+}
+%globalButton {
+    @include buttonText;
+    padding: 4px 20px 2px;
+    outline: none;
+    border:2px solid $primaryColorDark;
+    border-color: $primaryColorDark;
+    background-color: $primaryColorDark;
+    color: $deemWhite;
+    @extend %transition;
+    svg {
+        fill:$deemWhite;
+        font-size: 22px;
+        position: relative;
+        bottom:1px;
+        left:-2px;
+        @extend %transition;
+    }
+    &:hover {
+        background-color: transparent;
+        color: $primaryColorDark;
+        svg {
+            fill: $primaryColorDark;
+            left: 5px;
+        }
+    }
+    @media only screen and (max-width: 992px) {
+        padding: 5px 12px 1px;
+        svg {
+            bottom: 2px;
+        }
+        &:hover {
+            svg {
+                left: 0;
+            }
+        }
+    }
 }
