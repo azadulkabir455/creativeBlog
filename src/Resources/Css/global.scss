@@ -210,7 +210,13 @@ p {
 
 
 // Global Classes
-
+@mixin img($height) {
+    width: 100%;
+    height: $height;
+    object-fit:cover;
+    object-position: top;
+    border-radius: 4px;
+}
 %transition {
     transition: all .3s linear;
 }
@@ -220,6 +226,7 @@ p {
     outline: none;
     border:2px solid $primaryColorDark;
     border-color: $primaryColorDark;
+    border-radius: 4px;
     background-color: $primaryColorDark;
     color: $deemWhite;
     @extend %transition;

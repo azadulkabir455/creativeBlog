@@ -1,0 +1,258 @@
+@import "./global.scss";
+
+.homePageCotainer {
+    padding: 120px 0;
+
+    .blogs {
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 10px;
+        }
+
+        .title {
+            padding: 20px 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            h4 {
+                @include h5;
+
+                a {
+                    text-decoration: none;
+                    color: $titleColor;
+                    @extend %transition;
+
+                    &:hover {
+                        color: transparentize($titleColor, .4);
+                    }
+                }
+            }
+
+            span {
+                display: inline-block;
+                padding: 4px 6px;
+                background-color: $primaryColorDark;
+                border-radius: 4px;
+
+                @include preHeader {
+                    color: $deemWhite;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .author {
+            margin-top: 20px;
+            margin-bottom: 30px;
+
+            img {
+                width: 75px;
+                height: 75px;
+                border-radius: 100px;
+            }
+
+            h4 {
+                @include buttonText;
+                margin: 0;
+
+                a {
+                    text-decoration: none;
+                    color: $primaryColor;
+                    @extend %transition;
+
+                    &:hover {
+                        color: $titleColor;
+                    }
+                }
+            }
+
+            p {
+                @include paragraphFont {
+                    color: $paragraphColor;
+                }
+            }
+        }
+    }
+    .morePost {
+        @extend %globalButton;
+        display: block;
+        margin: 30px auto 0;
+    }
+
+    .recentPost {
+        padding: 30px;
+        border: 1px solid $secondaryColor;
+        border-radius: 4px;
+        margin-bottom: 30px;
+
+        h4 {
+            @include h5 {
+                color: $titleColor;
+            }
+
+            margin-bottom: 14px;
+        }
+
+        .row {
+            padding: 16px 0;
+            border-bottom: 1px solid $secondaryColor;
+
+            p {
+                @include paragraphFont {
+                    color: $paragraphColor;
+                }
+
+                ;
+                margin-bottom: 6px;
+            }
+
+            h4 {
+                @include buttonText {
+                    color: $titleColor;
+                }
+
+                margin-bottom: 0;
+                padding-right: 20px;
+            }
+
+            img {
+                @include img(70px);
+            }
+        }
+
+        .row:last-child {
+            padding-bottom: 0;
+            border: none;
+        }
+    }
+
+    .gallery {
+        padding: 30px;
+        background-color: $secondaryColor;
+        border-radius: 4px;
+        margin-bottom: 30px;
+
+        h4 {
+            @include h5 {
+                color: transparentize($titleColor, .2)
+            }
+
+            margin-bottom: 30px;
+        }
+
+        img {
+            @include img(auto)
+        }
+    }
+
+    .categories {
+        padding: 30px;
+        border: 1px solid $secondaryColor;
+        border-radius: 4px;
+        margin-bottom: 30px;
+
+        h4 {
+            @include h5 {
+                color: $titleColor;
+            }
+
+            margin-bottom: 30px;
+        }
+
+        .row {
+            border: 1px solid $secondaryColor;
+            border-radius: 4px;
+
+            h4 {
+                @include buttonText {
+                    color: $titleColor;
+                }
+
+                margin-bottom: 0;
+                padding: 6px;
+            }
+
+            p {
+                @include menuText {
+                    color: $titleColor;
+                }
+
+                margin-bottom: 0;
+            }
+        }
+
+        .row:not(:last-child) {
+            border-bottom: 0;
+        }
+    }
+
+    .tags {
+        padding: 30px;
+        border: 1px solid $secondaryColor;
+        border-radius: 4px;
+        margin-bottom: 30px;
+
+        h4 {
+            @include h5 {
+                color: $titleColor;
+            }
+
+            margin-bottom: 30px;
+        }
+        a {
+            @include menuText {
+                color: $deemWhite;
+                text-decoration: none;
+            }
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 5px;
+            background-color: $primaryColorDark;
+        }
+    }
+    .newsletter {
+        padding: 30px;
+        background-color: $secondaryColor;
+        border-radius: 4px;
+
+        h4 {
+            @include h5 {
+                color: transparentize($titleColor, .2)
+            }
+
+            margin-bottom: 10px;
+        }
+        label {
+            color: transparentize($paragraphColor, .2);
+        }
+        input {
+            outline: none;
+            border:none;
+        }
+        .newsletterButton {
+            @extend %globalButton;
+            margin-top: 20px;
+        }
+
+    }
+
+}
+
+// Theming CSS
+
+#dark.homePageCotainer {
+    background-color: $themeLightDark;
+   h4,p {
+    color: $deemWhite;
+   }
+   .gallery, .newsletter {
+    background-color: $themeDeepDark;
+   }
+}
