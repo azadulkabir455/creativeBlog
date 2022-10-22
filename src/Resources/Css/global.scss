@@ -258,3 +258,13 @@ p {
         }
     }
 }
+
+.themeButton {
+    @extend %globalButton;
+    position: fixed;
+    right: 0;
+    top: 20%;
+    svg {
+        left:3px;
+    }
+}

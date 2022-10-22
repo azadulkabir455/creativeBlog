@@ -8,7 +8,7 @@ export default function HomeBanner() {
     return (
         <>
             <div className="container-fluid homeBanner" id={theme}>
-                <video width="320" height="240" autoPlay muted loop>
+                <video width="320" height="240" autoPlay muted loop >
                     <source src={Videos.video} type="video/mp4" />
                 </video>
                 <div className="overlay"></div>

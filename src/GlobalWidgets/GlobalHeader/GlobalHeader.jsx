@@ -5,10 +5,10 @@ import { GlobalContextProvider } from "../../ContextApi/GlobalContext"
 import { BsArrowRightShort } from "react-icons/bs";
 
 export default function GlobalHeader() {
-    const { theme, toggleTheme } = useContext(GlobalContextProvider)
+    const { theme } = useContext(GlobalContextProvider)
     return (
         <>
-            <nav className=" myNavbar navbar navbar-expand-lg" id={theme}>
+            <nav className=" myNavbar navbar navbar-expand-lg " id={theme}>
                 <div className="container">
                     <Link className="navbar-brand" to="/">Akash</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,6 @@ export default function GlobalHeader() {
                     </div>
                 </div>
             </nav>
-            <button onClick={toggleTheme}>theme</button>
         </>
     )
 }

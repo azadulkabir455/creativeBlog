@@ -1,0 +1,46 @@
+@import '../global.scss';
+
+.otherPageBanner {
+    min-height: 450px;
+    background-image: url('../../media/images/otherPageBaner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    .overlay {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background-color: transparentize($primaryColor, .30);
+    }
+    .bannerContent {
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+        h1 {
+            @include h1 {
+                color: $deemWhite;
+                text-transform: uppercase;
+            }
+        }
+        p {
+            @include buttonText {
+                color: $deemWhite;
+                text-transform: capitalize;
+                margin-top: 16px;
+            }
+        }
+    }
+}
+
+#dark.otherPageBanner {
+    .overlay {
+        background-color: transparentize($themeDeepDark, .30);
+        mix-blend-mode: multiply;
+    }
+}

@@ -1,0 +1,41 @@
+@import "./global.scss";
+
+.contactUs {
+    padding: 120px 0;
+    h2 {
+        @include h2 {
+            color: $titleColor;
+            text-transform: uppercase;
+        }
+        margin-bottom: 30px;
+    }
+    input {
+        @include paragraphFont;
+        color: $paragraphColor
+    }
+    label {
+        color: $paragraphColor;
+    }
+    button {
+        @extend %globalButton;
+        margin-top: 28px;
+    }
+}
+
+// Theming Style
+#dark.contactUs {
+    background-color: $themeLightDark;
+    h2 {
+        color: $deemWhite
+    }
+    label {
+        color: $deemWhite
+    }
+    input,select, textarea {
+        background-color: $themeDeepDark;
+        color: $deemWhite;
+    }
+    ::placeholder {
+        color:transparentize($deemWhite, .5);
+    }
+}

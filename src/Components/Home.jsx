@@ -4,11 +4,16 @@ import { Link } from "react-router-dom"
 import { Images } from "../Resources/media/Media"
 import { BsArrowRightShort } from "react-icons/bs";
 import "../Resources/Css/home.scss"
+import GlobalHeader from '../GlobalWidgets/GlobalHeader/GlobalHeader';
+import GlobalFooter from '../GlobalWidgets/GlobalFooter/GlobalFooter';
+import HomeBanner from './Elements/HomeBanner';
 
 export default function Home() {
   const { theme } = useContext(GlobalContextProvider)
   return (
     <>
+    <GlobalHeader />
+    <HomeBanner />
       <div className="homePageCotainer" id={theme}>
         <div className="container-lg">
           <div className="row g-5">
@@ -155,6 +160,14 @@ export default function Home() {
                 </div>
                 <div className="row">
                   <div className="col-10 align-self-center">
+                    <h4>Blog</h4>
+                  </div>
+                  <div className="col-2 align-self-center">
+                    <p>9</p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-10 align-self-center">
                     <h4>Natures</h4>
                   </div>
                   <div className="col-2 align-self-center">
@@ -185,6 +198,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <GlobalFooter />
     </>
   )
 }
