@@ -23,7 +23,7 @@ export default function GlobalHeader() {
                                 <Link to="/contact" className='nav-link'>Contact</Link>
                             </li>
                             <li className="nav-item">
-                                <button className="menuButton">Login <BsArrowRightShort /></button>
+                                <Link to="/login"><button className="menuButton">Login <BsArrowRightShort /></button></Link>
                             </li>
                         </ul>
                     </div>
