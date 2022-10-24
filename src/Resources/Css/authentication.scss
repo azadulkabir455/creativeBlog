@@ -1,0 +1,56 @@
+@import "./home.scss";
+
+.formContainer {
+    padding-top: 80px;
+    h2 {
+        @include h5{
+            color: $titleColor; 
+        }
+    }
+    label,p {
+        @include paragraphFont {
+            color: $paragraphColor;
+        }
+    }
+    input {
+        @include paragraphFont {
+            color: $paragraphColor
+        }
+    }
+    ::placeholder,select {
+        @include paragraphFont;
+    }
+    p {
+        margin: 0;
+        a {
+            text-decoration: none;
+            color: $primaryColorDark;
+            @extend %transition;
+            &:hover {
+                color: $secondaryColor;
+            }
+        }
+    }
+}
+#dark.formContainer {
+    background-color: $themeDeepDark;
+    height: 100vh;
+    .form {
+        background-color: $themeLightDark;
+        h2,p, label,input  {
+            color: $deemWhite;
+
+        }
+        input {
+            background-color: $themeDeepDark;
+        }
+        select {
+            background-color: $themeDeepDark;
+            color: $deemWhite;
+        }
+        ::placeholder {
+            color: transparentize($deemWhite, .8)
+        }
+
+    }
+}
