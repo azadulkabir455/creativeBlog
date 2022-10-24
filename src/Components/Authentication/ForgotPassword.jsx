@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { GlobalContextProvider } from "../../ContextApi/GlobalContext"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "../../Resources/Css/authentication.scss"
 
 export default function ForgotPassword() {
-    const [email, setEmail] = useState("")
-    const { theme } = useContext(GlobalContextProvider);
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate();
+    const { theme, resetpass } = useContext(GlobalContextProvider);
     const fromHandler= (e) => {
         e.preventDefault();
+        resetpass(email).then(() => {
+            navigate("/login")
+        })
     }
     return (
         <>
@@ -25,7 +29,7 @@ export default function ForgotPassword() {
                                             <input type="email" className="form-control" id="email" placeholder="Write your Email" name="email" onChange={(e) => setEmail(e.target.value)} />
                                         </div>
                                         <div className="mt-4">
-                                            <button className='btn btn-success'>Send for Signup</button>
+                                            <button className='btn btn-success'>Send for Reset Pass</button>
                                         </div>
                                     </div>
                                 </div>

@@ -1,18 +1,23 @@
 import React, { useContext, useState } from 'react'
 import { GlobalContextProvider } from "../../ContextApi/GlobalContext"
-import { Link } from "react-router-dom"
+import { Link, useNavigate  } from "react-router-dom"
 import "../../Resources/Css/authentication.scss"
 
 export default function Signup() {
     const [userData, setUserData] = useState([]);
-    const [role, setRole] = useState("selected")
-    const { theme } = useContext(GlobalContextProvider);
+    const [role, setRole] = useState("selected");
+    const navigate = useNavigate()
+    const { theme,signup } = useContext(GlobalContextProvider);
 
     const combinedUserData = {...userData, role}
     const {email, password, ...data} = combinedUserData;
     
     const formHandler =(e) => {
         e.preventDefault();
+        signup(email, password, {...data}).then(() => {
+            navigate("/login")
+        })
+        
     }
     const inputHandle = (e) => {
         const name = e.target.name;
@@ -31,7 +36,7 @@ export default function Signup() {
                                     <div className="col-12 col-md-6">
                                         <div className="mb-3">
                                             <label htmlFor="name" className="form-label">Your Full Name: </label>
-                                            <input type="email" className="form-control" id="name" name="name" placeholder="Write your full name" onChange={inputHandle} />
+                                            <input type="text" className="form-control" id="name" name="name" placeholder="Write your full name" onChange={inputHandle} />
                                         </div>
                                         <div className="mb-3">
                                             <label htmlFor="phone" className="form-label">Phone Number: </label>

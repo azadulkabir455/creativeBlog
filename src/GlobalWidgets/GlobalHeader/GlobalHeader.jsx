@@ -5,7 +5,7 @@ import { GlobalContextProvider } from "../../ContextApi/GlobalContext"
 import { BsArrowRightShort } from "react-icons/bs";
 
 export default function GlobalHeader() {
-    const { theme } = useContext(GlobalContextProvider)
+    const { theme, userProfiles, logout } = useContext(GlobalContextProvider)
     return (
         <>
             <nav className=" myNavbar navbar navbar-expand-lg " id={theme}>
@@ -22,9 +22,37 @@ export default function GlobalHeader() {
                             <li className="nav-item">
                                 <Link to="/contact" className='nav-link'>Contact</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to="/login"><button className="menuButton">Login <BsArrowRightShort /></button></Link>
-                            </li>
+                            {
+                                userProfiles ?
+                                    <>
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Blogs
+                                            </a>
+                                            <ul className="dropdown-menu">
+                                                <li><Link className='dropdown-item'>Read Blogs</Link></li>
+                                                <li><hr className="dropdown-divider" /></li>
+                                                <li><Link className='dropdown-item'>Add Blogs</Link></li>
+                                            </ul>
+                                        </li>
+                                        <li className="nav-item dropdown">
+                                            <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                User
+                                            </a>
+                                            <ul className="dropdown-menu">
+                                                <li><Link className='dropdown-item'>User Profile</Link></li>
+                                                <li><hr className="dropdown-divider" /></li>
+                                                <li><Link className='dropdown-item' onClick={logout}>Logout</Link></li>
+                                            </ul>
+                                        </li>
+                                    </> :
+                                    <>
+                                        <li className="nav-item">
+                                            <Link to="/login"><button className="menuButton">Login <BsArrowRightShort /></button></Link>
+                                        </li>
+                                    </>
+                            }
+
                         </ul>
                     </div>
                 </div>

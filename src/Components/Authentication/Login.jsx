@@ -1,14 +1,19 @@
 import React,{useContext,useState} from 'react'
 import {GlobalContextProvider} from "../../ContextApi/GlobalContext"
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import "../../Resources/Css/authentication.scss"
 
 export default function Login() {
     const [userData, setUserData] = useState([]);
-    const {theme} = useContext(GlobalContextProvider);
-    console.log(userData)
+    const navigate =useNavigate();
+    const {theme, login} = useContext(GlobalContextProvider);
+    const {email, password} = userData;
     const fromHandler = (e) => {
         e.preventDefault();
+        login(email, password).then(() => {
+            navigate("/")
+        })
+
     }
     const inputHandle = (e) => {
         const name = e.target.name;
@@ -36,7 +41,7 @@ export default function Login() {
                                         <input type="text" className="form-control" id="password" placeholder="Write your password" name="password" onChange={inputHandle} />
                                     </div>
                                     <div className="mt-4">
-                                        <button className='btn btn-success'>Send for Signup</button>
+                                        <button className='btn btn-success'>Send for Login</button>
                                     </div>
                                 </div>
                             </div>
