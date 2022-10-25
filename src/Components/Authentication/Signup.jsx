@@ -11,6 +11,7 @@ export default function Signup() {
 
     const combinedUserData = {...userData, role}
     const {email, password, ...data} = combinedUserData;
+    console.log({email, password, ...data})
     
     const formHandler =(e) => {
         e.preventDefault();
