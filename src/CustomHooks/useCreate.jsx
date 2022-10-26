@@ -5,7 +5,7 @@ export default function useCreate(dbCollection, userData) {
     const addData = async () => {
         const collectionRef = collection(db, dbCollection);
         await addDoc(collectionRef,userData).then(() => {
-            console.log("dataUpdate Succesfully")
+            console.log("Data Upload Succesfully")
         }).catch((error) => {
             console.log(error.message)
         })
