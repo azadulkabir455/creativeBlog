@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import useFetch from '../../CustomHooks/useFetch'
-import useDelete from '../../CustomHooks/useDelete'
-import { BsArrowRightShort } from "react-icons/bs";
+import useUpdate from "../../CustomHooks/useUpdate"
+import {db} from "../../firebase-config";
+import {doc, deleteDoc} from "firebase/firestore"
 
 export default function ContactInfo() {
   const [userdata, setUserData] = useState([]);
   const [role, setRole] = useState("role");
   const [message, setMessage] = useState("Write your messaage")
   const [contactId, setContactId] = useState();
+  const combineData = {...userdata, role, message}
   const [data] = useFetch("contactInfo");
-  const { deleteData } = useDelete("contactInfo", contactId)
-
+  const [updateData] = useUpdate("contactInfo",contactId, combineData);
 
 
   const fromHandler = (e) => {
@@ -21,10 +22,26 @@ export default function ContactInfo() {
     const value = e.target.value;
     setUserData(prev => ({...prev, [name]:value}))
   }
-  useEffect(() => {
-    contactId && deleteData();
-  }, [contactId])
+  const selectContactInfo = (name,email,phone,role,message,id) => {
+    setUserData({name,email,phone});
+    setRole(role);
+    setMessage(message);
+    setContactId(id)
+  }
+  const updateContactInfo = () => {
+    updateData();
+  }
 
+  const deleteConfirmation = async (id) => {
+    if(window.confirm("Are you sure to Delete data")){
+      const userDoc = doc(db, "contactInfo", id);
+      await deleteDoc(userDoc).then(() => {
+        console.log("User delete successfully")
+      }).catch((error) => {
+        console.log(error.message)
+      })
+    }
+  }
 
 
   return (
@@ -42,8 +59,8 @@ export default function ContactInfo() {
               <p>{contact.message}</p>
             </div>
             <div className="card-footer">
-              <button className='btn btn-info' data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-              <button className='btn btn-danger' onClick={() => setContactId(contact.id)}>Delete</button>
+              <button className='btn btn-info' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => selectContactInfo(contact.name,contact.email,contact.phone,contact.role,contact.message,contact.id)}>Edit</button>
+              <button className='btn btn-danger' onClick={() => deleteConfirmation(contact.id)}>Delete</button>
             </div>
           </div>
         )
@@ -62,15 +79,15 @@ export default function ContactInfo() {
                   <div className="col-12 col-lg-6">
                     <div className="mb-3">
                       <label htmlFor="name" className="form-label">Full Name:</label>
-                      <input type="name" className="form-control" id="name" placeholder="Write Your Name" name="name" onChange={inputHandle} />
+                      <input type="name" className="form-control" id="name" placeholder="Write Your Name" value={userdata.name} name="name" onChange={inputHandle} />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="email" className="form-label">Email: </label>
-                      <input type="email" className="form-control" id="email" placeholder="Write Your Email" name="email" onChange={inputHandle} />
+                      <input type="email" className="form-control" id="email" placeholder="Write Your Email" value={userdata.email} name="email" onChange={inputHandle} />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="phone" className="form-label">Phone:</label>
-                      <input type="phone" className="form-control" id="phone" placeholder="Write Your phone" name="phone" onChange={inputHandle} />
+                      <input type="phone" className="form-control" id="phone" placeholder="Write Your phone" value={userdata.phone} name="phone" onChange={inputHandle} />
                     </div>
                     <div>
                       <label htmlFor="select" className="form-label">Select your role:</label>
@@ -86,15 +103,13 @@ export default function ContactInfo() {
                       <label htmlFor="message" className="form-label">Example textarea</label>
                       <textarea className="form-control" id="message" rows="9" value={message} onChange={(e) => setMessage(e.target.value)} />
                     </div>
-                    <button>Send <BsArrowRightShort /></button>
                   </div>
                 </div>
 
               </form>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={updateContactInfo}>Save changes</button>
             </div>
           </div>
         </div>

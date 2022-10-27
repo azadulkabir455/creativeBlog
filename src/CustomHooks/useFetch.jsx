@@ -11,6 +11,6 @@ export default function useFetch(collectionName) {
             setData(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getData()
-    },[collectionName])
+    },[data])
     return [data]
 }
