@@ -1,15 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { GlobalContextProvider } from "../ContextApi/GlobalContext"
 import { Link } from "react-router-dom"
 import { Images } from "../Resources/media/Media"
 import { BsArrowRightShort } from "react-icons/bs";
+import useCreate from '../CustomHooks/useCreate';
 import "../Resources/Css/home.scss"
 import GlobalHeader from '../GlobalWidgets/GlobalHeader/GlobalHeader';
 import GlobalFooter from '../GlobalWidgets/GlobalFooter/GlobalFooter';
 import HomeBanner from './Elements/HomeBanner';
 
 export default function Home() {
-  const { theme } = useContext(GlobalContextProvider)
+  const [email, setEmail] = useState();
+  const { theme } = useContext(GlobalContextProvider);
+  const [addData] = useCreate("newsletter",{email})
+
+  const fromHandle = (e) => {
+    e.preventDefault();
+    addData();
+  }
   return (
     <>
     <GlobalHeader />
@@ -186,10 +194,10 @@ export default function Home() {
                 <h4>Newsletter</h4>
                 <div className="row">
                   <div>
-                    <form action="">
+                    <form action="#" onSubmit={fromHandle}>
                       <label htmlFor="email" className="form-label">Email address</label>
-                      <input type="email" className="form-control" id="email" placeholder="name@example.com" />
-                      <button class="newsletterButton">Subscribe <BsArrowRightShort /></button>
+                      <input type="email" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" />
+                      <button className="newsletterButton">Subscribe <BsArrowRightShort /></button>
                     </form>
                   </div>
                 </div>
