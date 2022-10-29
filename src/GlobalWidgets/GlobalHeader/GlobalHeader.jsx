@@ -30,9 +30,9 @@ export default function GlobalHeader() {
                                                 Blogs
                                             </a>
                                             <ul className="dropdown-menu">
-                                                <li><Link className='dropdown-item'>Read Blogs</Link></li>
+                                                <li><Link className='dropdown-item' to="/blog">Read Blogs</Link></li>
                                                 <li><hr className="dropdown-divider" /></li>
-                                                <li><Link className='dropdown-item'>Add Blogs</Link></li>
+                                                <li><Link className='dropdown-item' to="/addBlog">Add Blogs</Link></li>
                                             </ul>
                                         </li>
                                         <li className="nav-item dropdown">
