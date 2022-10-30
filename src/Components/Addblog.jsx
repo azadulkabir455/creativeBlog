@@ -1,28 +1,95 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import GlobalHeader from "../GlobalWidgets/GlobalHeader/GlobalHeader"
 import GlobalFooter from "../GlobalWidgets/GlobalFooter/GlobalFooter"
 import OtherPageBanner from "./Elements/OtherPageBanner"
 import useCreate from '../CustomHooks/useCreate'
 import {Editor} from "@tinymce/tinymce-react"
+import {GlobalContextProvider} from "../ContextApi/GlobalContext"
+import {v4} from "uuid";
+import { db, storage } from '../firebase-config'
+import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage"
+import { doc, getDoc, serverTimestamp } from 'firebase/firestore' 
 
 export default function Addblog() {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogType, setBlogType] = useState("select")
   const [blogExerpt, setBlogExerpt] = useState("Write your exerpt")
   const [blog, setBlog] = useState("")
-  const combinedData = {blogTitle,blogType, blogExerpt, blog}
+  const [imgUpload, setImgUploadImg] = useState(null);
+  const [progress,setProgress] = useState(null);
+  const [imgUrl, setImgUrl] = useState('')
+  const [currentUserDatas, setCurrentUserDatas  ] = useState([])
+  const {userProfiles} = useContext(GlobalContextProvider);
 
-  const [addData] = useCreate("blog",combinedData)
-
-  console.log(combinedData)
-  const formHandler = (e) => {
-    e.preventDefault();
-    addData();
+  const combinedData = {
+    blogTitle,
+    blogType, 
+    blogExerpt, 
+    blog, 
+    imgUrl,
+    timestamp: serverTimestamp(),
+    authorInfo: {
+      name: currentUserDatas.data && currentUserDatas.data.name,
+      email:userProfiles.email,
+      id:userProfiles.uid
   }
+}
+console.log(currentUserDatas.data)
+console.log(combinedData)
+
+
+const [addData] = useCreate("blog",combinedData)
+
+
+  const formHandler =  (e) => {
+    e.preventDefault();
+     addData();
+  }
+ useEffect(() => {
+  userProfiles.uid && currentUserData();
+ },[userProfiles.uid])
+
+ const currentUserData = async () => {
+  const userRef = doc(db,"userProfiles", userProfiles.uid);
+  const snapshot = await getDoc(userRef);
+  setCurrentUserDatas({...snapshot.data()}) 
+ }
+  useEffect(() => {
+    if(imgUpload === null) return;
+    const imgRef = ref(storage, `blogImg/${imgUpload.name + v4()}`)
+    const uploadTask = uploadBytesResumable(imgRef, imgUpload);
+
+    uploadTask.on("state_changed", (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      setProgress(progress);
+
+      switch(snapshot.state) {
+        case "paused":
+          console.log("data uploading pause");
+          break;
+        case "running":
+          console.log("data uploading running");
+          break;
+        default : {
+          console.log("uloading done")
+        }
+      }
+      } , (error) => {
+
+        console.log(error.message)
+    }, () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+        setImgUrl(url);
+      })
+    }
+    )
+  },[imgUpload])
+  
+
   return (
     <>
       <GlobalHeader />
-      <OtherPageBanner title="blog" />
+      <OtherPageBanner title="add blog" />
       <div className="container">
         <div className="row">
           <div className="col">
@@ -71,7 +138,7 @@ export default function Addblog() {
                 </div>
                 <div className="col-12">
                 <label htmlFor="img" className="form-label">Blog Img</label>
-                  <input type="file"  id='img'/>
+                  <input type="file"  id='img' onChange={(e) => setImgUploadImg(e.target.files[0])} disabled={progress !== null && progress < 100}/>
                 </div>
                 <div className="col-12">
                 <input type="submit" value="submit" />

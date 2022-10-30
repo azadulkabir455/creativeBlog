@@ -37,7 +37,7 @@ export default function NewsletterInfo() {
         </thead>
         <tbody>
           {
-            data.map((emailItem) => 
+            data.slice(0,2).map((emailItem) => 
                 <tr key={emailItem.id}>
                   <td>{emailItem.email}</td>
                   <td>
