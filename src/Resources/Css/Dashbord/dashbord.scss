@@ -1,0 +1,53 @@
+@import "../global.scss";
+
+
+.dashbord {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    .dashbordMenuItem {
+        width: 240px;
+        padding: 30px 20px;
+        background-color: $primaryColorDark;
+        a {
+            display: block;
+            margin-bottom: 8px;
+            @include paragraphFont {
+                color: $deemWhite;
+                text-decoration: none;
+            }
+            @extend %transition;
+            &:hover {
+                color: $paragraphColor
+            }
+            svg {
+                margin-right: 6px;
+                font-size: 18px;
+            }
+        }
+        a.home {
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .dashbordContent {
+        width:100%;
+        padding: 30px 140px 30px 30px;
+    }
+}
+
+#dark.dashbord {
+    .dashbordMenuItem {
+        background-color: $themeDeepDark;
+        a {
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+    }
+    .dashbordContent {
+        background-color: $themeLightDark;
+        color: $deemWhite;
+    }
+}
