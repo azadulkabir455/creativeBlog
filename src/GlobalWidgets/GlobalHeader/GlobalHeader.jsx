@@ -8,7 +8,7 @@ export default function GlobalHeader() {
     const { theme, userProfiles, logout } = useContext(GlobalContextProvider)
     return (
         <>
-            <nav className=" myNavbar navbar navbar-expand-lg " id={theme}>
+            <nav className=" myNavbar navbar navbar-expand-lg sticky-top" id={theme}>
                 <div className="container">
                     <Link className="navbar-brand" to="/">Akash</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@ export default function GlobalHeader() {
                                 userProfiles ?
                                     <>
                                         <li className="nav-item dropdown">
-                                            <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a className="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Blogs
                                             </a>
                                             <ul className="dropdown-menu">
@@ -36,7 +36,7 @@ export default function GlobalHeader() {
                                             </ul>
                                         </li>
                                         <li className="nav-item dropdown">
-                                            <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a className="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 User
                                             </a>
                                             <ul className="dropdown-menu">

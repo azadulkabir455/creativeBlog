@@ -6,7 +6,7 @@
     position: relative;
     video {
         width: 100%;
-        height: 600px;
+        min-height: 100vh;
         object-fit: cover;
         display: block;
     }
@@ -14,7 +14,8 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: transparentize($primaryColorDark, .3);
+        background-color: transparentize($themeDeepDark, .4);
+        mix-blend-mode:multiply;
         top:0;
         left:0;
     }
@@ -26,10 +27,9 @@
         width: 100%;
         transform: translate(-50%,-50%);
         h4 {
-            @include h3;
+            @include preHeader;
             color: $deemWhite;
             text-transform: uppercase;
-            margin-bottom: 20px;
         }
         h1 {
             @include h1 {
@@ -39,7 +39,64 @@
                 -webkit-text-stroke: 1px $deemWhite;
                 letter-spacing: 5px;
             }
+            padding: 12px 20px;
         }
+        .buttonGroup {
+            padding-top: 40px;
+            button {
+                border:none;
+                outline: none;
+                background-color: transparent;
+                a {
+                    @include buttonText {
+                        text-decoration: none;
+                        color: $paragraphColor;
+                    }
+                    background-color: $deemWhite;
+                    border: 2px solid $deemWhite;
+                    border-radius: 4px;
+                    padding: 14px 40px;
+                    @extend %transition;
+                    &:hover {
+                        background-color: $primaryColorDark;
+                        border-color: $primaryColorDark;
+                        color: $deemWhite;
+                    }
+                }
+                .contactButton {
+                    background-color:transparent;
+                    border-color: $deemWhite;
+                    color: $deemWhite;
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 576px) {
+       .content {
+        padding: 0 20px;
+        h1 {
+            padding: 8px  0 0;
+            font-size: 40px;
+            line-height: 50px;
+        }
+        .buttonGroup {
+            padding-top: 30px;
+            button {
+                display: block;
+                margin: 0 auto;
+                a {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    min-width: 200px;
+                }
+                .contactButton {
+                    margin: 0;
+                    margin-top: 20px;
+                }
+            }
+        }
+       }
     }
 }
 
@@ -48,12 +105,6 @@
 #dark.homeBanner {
     .overlay {
         background-color: transparentize($themeDeepDark, .2);
-        mix-blend-mode: multiply;
-    }
-    h4 {
-        color: $deemWhite;
-    }
-    h1 {
-        -webkit-text-stroke: 1px $deemWhite;
+        mix-blend-mode:luminosity;
     }
 }

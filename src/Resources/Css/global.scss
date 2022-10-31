@@ -58,13 +58,14 @@ h4,
 h5,
 p {
     margin: 0;
+    padding: 0;
 }
 
 // Global fonts
 @mixin h1 {
     font-family: $fontFamily;
-    font-size: 90px;
-    line-height: 90px;
+    font-size: 80px;
+    line-height: 80px;
     font-weight: 800;
     text-transform: capitalize;
     @content;
@@ -219,6 +220,9 @@ p {
 }
 %transition {
     transition: all .3s linear;
+}
+%boxShadow {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 %globalButton {
     @include buttonText;

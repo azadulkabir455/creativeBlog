@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalContextProvider } from "../ContextApi/GlobalContext"
 import { Link } from "react-router-dom"
 import { Images } from "../Resources/media/Media"
@@ -12,7 +12,7 @@ import HomeBanner from './Elements/HomeBanner';
 export default function Home() {
   const [email, setEmail] = useState();
   const { theme } = useContext(GlobalContextProvider);
-  const [addData] = useCreate("newsletter",{email})
+  const [addData] = useCreate("newsletter", { email })
 
   const fromHandle = (e) => {
     e.preventDefault();
@@ -20,10 +20,31 @@ export default function Home() {
   }
   return (
     <>
-    <GlobalHeader />
-    <HomeBanner />
+      <HomeBanner />
+      <GlobalHeader />
       <div className="homePageCotainer" id={theme}>
         <div className="container-lg">
+          <div className="row userCount">
+            <div className="col-12 col-md-4 ">
+              <div className="totalNumber">
+                <div className="number">20</div>
+                <p>Total Post</p>
+              </div>
+            </div>
+            <div className="col-12 col-md-4">
+              <div className="totalNumber">
+                <div className="number">20</div>
+                <p>Total Users</p>
+              </div>
+
+            </div>
+            <div className="col-12 col-md-4 ">
+              <div className="totalNumber">
+                <div className="number">20</div>
+                <p>Total Subscription</p>
+              </div>
+            </div>
+          </div>
           <div className="row g-5">
             <div className="col-12 col-lg-8">
               <div className="row g-4">
@@ -100,7 +121,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <button className='morePost'>Load More <BsArrowRightShort/></button>
+              <button className='morePost'>Load More <BsArrowRightShort /></button>
             </div>
             <div className="col-12 col-lg-4">
               <div className="recentPost">

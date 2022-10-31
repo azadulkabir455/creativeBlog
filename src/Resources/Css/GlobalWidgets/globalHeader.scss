@@ -2,7 +2,8 @@
 
 .myNavbar.navbar {
     padding: 20px 0;
-
+    background-color: $deemWhite;
+    box-shadow: 0 2px 6px 0 #ddd;
     .navbar-brand {
         padding: 0;
 
@@ -59,6 +60,16 @@
                 width: 100%;
             }
         }
+        .dropdown-menu {
+            padding: 4px 0;
+            .dropdown-divider {
+                margin: 2px 0;
+            }
+            .dropdown-item {
+                @include menuText;
+                color: transparentize($paragraphColor, .3);
+            }
+        }
     }
 
     .menuButton {
@@ -68,11 +79,21 @@
             margin-top: 10px;
         }
     }
+    @media only screen and (max-width: 992px) {
+        .nav-item {
+            .dropdown-menu {
+                position: absolute;
+                top:-5px;
+                left: 50px;
+            }
+        }
+    }
 }
 
 // Theming CSS
 #dark.myNavbar.navbar {
-    background-color: $themeDeepDark;
+    background-color: $themeLightDark;
+    box-shadow: 0 2px 6px 0 $themeDeepDark;
 
     .navbar-brand {
         color: $deemWhite
@@ -83,6 +104,15 @@
     .nav-item {
         .nav-link {
             color: transparentize($deemWhite, .2)
+        }
+        .dropdown-menu {
+            background-color: transparentize($themeDeepDark, .4);
+            .dropdown-item {
+                color: transparentize($deemWhite, .2);
+                &:hover {
+                    background-color: transparentize($themeDeepDark, .1) !important;
+                }
+            }
         }
     }
 }

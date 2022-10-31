@@ -3,11 +3,20 @@
 .contactUs {
     padding: 120px 0;
     h2 {
-        @include h2 {
+        @include h3 {
             color: $titleColor;
-            text-transform: uppercase;
+            text-transform: capitalize;
+            text-align: center;
         }
-        margin-bottom: 30px;
+    }
+    p{
+        @include paragraphFont {
+            text-align: center;
+            color: $paragraphColor;
+
+        }
+        max-width: 780px;
+        margin: 0 auto 60px;
     }
     input {
         @include paragraphFont;
@@ -20,12 +29,18 @@
         @extend %globalButton;
         margin-top: 28px;
     }
+    @media only screen and (max-width: 992px) {
+        padding: 60px 0;
+        p {
+            margin-bottom: 40px;
+        }
+    }
 }
 
 // Theming Style
 #dark.contactUs {
     background-color: $themeLightDark;
-    h2 {
+    h2,p {
         color: $deemWhite
     }
     label {

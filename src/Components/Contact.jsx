@@ -27,14 +27,15 @@ export default function Contact() {
   }
   return (
     <>
-      <GlobalHeader />
       <OtherPageBanner title="Contact" />
+      <GlobalHeader />
       <div className="contactUs" id={theme}>
         <div className="container-lg">
-          <h2 className='offset-2'>Send Us Message</h2>
+          <h2>Contact with us</h2>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim neque eius deserunt necessitatibus velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corporis.</p>
           <form action="#" onSubmit={fromHandler}>
             <div className="row g-4">
-              <div className="col-12 col-lg-4 offset-2">
+              <div className="col-12 col-lg-4 offset-lg-2">
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Full Name:</label>
                   <input type="name" className="form-control" id="name" placeholder="Write Your Name" name="name" onChange={inputHandle} />

@@ -2,6 +2,7 @@
 
 .mainFooter {
     padding: 120px 0;
+    background-color: transparentize($secondaryColor,.7);
     .brandLogo {
         margin-bottom: 20px;
         a {
@@ -54,6 +55,26 @@
                 color: transparentize($paragraphColor, .3);
             }
             margin-top:20px;
+        }
+    }
+    @media only screen and (max-width: 992px) {
+        padding: 60px 0;
+        .brandLogo,.socialLink {
+            text-align: center;
+        }
+        .socialLink {
+            margin-bottom: 40px;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .brandLogo,.socialLink {
+            text-align: left;
+        }
+        .socialLink,.quickLink {
+            margin-bottom: 40px;
+        }
+        .address {
+            max-width: 230px;
         }
     }
 }

@@ -22,8 +22,8 @@ export default function GlobalFooter() {
                                 <Link><BsTwitter /></Link>
                             </div>
                         </div>
-                        <div className="col-12 col-md-6 col-lg-3">
-                            <div className="footertitle"> 
+                        <div className="col-12 col-md-3 col-lg-3 offset-md-3 offset-lg-0">
+                            <div className="footertitle">
                                 <h4>Quick Link</h4>
                             </div>
                             <div className="quickLink">
@@ -31,10 +31,10 @@ export default function GlobalFooter() {
                                 <Link to="/contact">Contact</Link>
                             </div>
                         </div>
-                        <div className="col-12 col-md-6 col-lg-3">
-                        <div className="footertitle">
-                            <h4>Contact Info</h4>
-                        </div>
+                        <div className="col-12 col-md-3 col-lg-3">
+                            <div className="footertitle">
+                                <h4>Contact Info</h4>
+                            </div>
                             <div className="contactinfo">
                                 <Link tel="88000345589">+88 000 345589</Link>
                                 <Link mailto="info@gmail.com">info@gmail.com</Link>

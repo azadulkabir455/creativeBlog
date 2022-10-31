@@ -1,0 +1,13 @@
+@import "./global.scss";
+
+.allBlog {
+    padding: 120px 0;
+    .btnGroup {
+        button {
+            width: 100%;
+            @extend %globalButton;
+            margin-bottom: 10px;
+            padding: 12px 0;
+        }
+    }
+}

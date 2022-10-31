@@ -2,10 +2,54 @@
 
 .homePageCotainer {
     padding: 120px 0;
-
+    .userCount {
+        margin-bottom: 60px;
+        .totalNumber {
+            padding: 40px;
+            border-radius: 10px;
+            background-color: transparentize($secondaryColor, .5);
+            .number {
+                @include h4 {
+                    color: $titleColor;
+                }
+                width: 100px;
+                height: 100px;
+                padding: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                border-radius: 100px;
+                border: 1px solid $primaryColorDark
+            }
+            p {
+                @include buttonText {
+                    color: $titleColor;
+                    text-transform: capitalize;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            }
+        }
+        @media only screen and (max-width: 992px) {
+            margin: 0 30px 60px;
+            .totalNumber {
+                padding: 30px 20px; 
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            margin: 0 10px 40px;
+            .totalNumber {
+                margin-bottom: 30px;
+                .number {
+                    width: 80px;
+                    height: 80px;
+                } 
+            }
+        }
+    }
     .blogs {
         position: relative;
-
         img {
             width: 100%;
             height: 450px;
@@ -21,7 +65,11 @@
             left: 0;
 
             h4 {
-                @include h5;
+                @include h5 {
+                    font-size: 18px;
+                    text-transform: capitalize;
+                }
+                margin-bottom: 0;
 
                 a {
                     text-decoration: none;
@@ -36,13 +84,15 @@
 
             span {
                 display: inline-block;
-                padding: 4px 6px;
+                padding: 0 4px;
                 background-color: $primaryColorDark;
                 border-radius: 4px;
-
+                margin-top: -5px;
                 @include preHeader {
                     color: $deemWhite;
                     font-weight: 500;
+                    font-size: 12px;
+                    letter-spacing: 2px;
                 }
             }
         }
@@ -75,6 +125,7 @@
             p {
                 @include paragraphFont {
                     color: $paragraphColor;
+                    font-size: 14px;
                 }
             }
         }
@@ -82,7 +133,9 @@
     .morePost {
         @extend %globalButton;
         display: block;
-        margin: 30px auto 0;
+        width: 100%;
+        margin: 40px auto 0;
+        padding: 12px;
     }
 
     .recentPost {
@@ -90,10 +143,12 @@
         border: 1px solid $secondaryColor;
         border-radius: 4px;
         margin-bottom: 30px;
+        @extend %boxShadow;
 
         h4 {
             @include h5 {
                 color: $titleColor;
+                font-size: 20px;
             }
 
             margin-bottom: 14px;
@@ -106,15 +161,17 @@
             p {
                 @include paragraphFont {
                     color: $paragraphColor;
+                    font-size: 14px;
                 }
-
-                ;
-                margin-bottom: 6px;
+                margin-bottom: 0;
             }
 
             h4 {
                 @include buttonText {
                     color: $titleColor;
+                    font-size: 14px;
+                    text-transform: capitalize;
+                    
                 }
 
                 margin-bottom: 0;
@@ -122,7 +179,7 @@
             }
 
             img {
-                @include img(70px);
+                @include img(60px);
             }
         }
 
@@ -137,10 +194,12 @@
         background-color: $secondaryColor;
         border-radius: 4px;
         margin-bottom: 30px;
+        @extend %boxShadow;
 
         h4 {
             @include h5 {
-                color: transparentize($titleColor, .2)
+                color: transparentize($titleColor, .2);
+                font-size: 20px;
             }
 
             margin-bottom: 30px;
@@ -156,10 +215,12 @@
         border: 1px solid $secondaryColor;
         border-radius: 4px;
         margin-bottom: 30px;
+        @extend %boxShadow;
 
         h4 {
             @include h5 {
                 color: $titleColor;
+                font-size: 20px;
             }
 
             margin-bottom: 30px;
@@ -176,6 +237,7 @@
             h4 {
                 @include buttonText {
                     color: $titleColor;
+                    text-transform: capitalize;
                 }
 
                 margin-bottom: 0;
@@ -201,10 +263,12 @@
         border: 1px solid $secondaryColor;
         border-radius: 4px;
         margin-bottom: 30px;
+        @extend %boxShadow;
 
         h4 {
             @include h5 {
                 color: $titleColor;
+                font-size: 20px;
             }
 
             margin-bottom: 30px;
@@ -217,7 +281,7 @@
             display: inline-block;
             padding: 2px 6px;
             border-radius: 4px;
-            margin-right: 5px;
+            margin: 2px 2px;
             background-color: $primaryColorDark;
         }
     }
@@ -225,10 +289,12 @@
         padding: 30px;
         background-color: $secondaryColor;
         border-radius: 4px;
+        @extend %boxShadow;
 
         h4 {
             @include h5 {
-                color: transparentize($titleColor, .2)
+                color: transparentize($titleColor, .2);
+                font-size: 20px;
             }
 
             margin-bottom: 10px;
@@ -248,6 +314,14 @@
         }
 
     }
+    @media only screen and (max-width: 992px) {
+        padding: 60px 0;
+        .blogs {
+            img {
+                height: 300px;
+            }
+        }
+    }
 
 }
 
@@ -258,10 +332,23 @@
    h4,p {
     color: $deemWhite;
    }
+   .userCount {
+    .totalNumber {
+        background: $themeDeepDark;
+        .number {
+            border-color: $deemWhite;
+            color: $deemWhite;
+        }
+    }
+   }
    .gallery, .newsletter {
     background-color: $themeDeepDark;
    }
    .newsletter {
+    input {
+        background-color: $themeLightDark;
+        color: $deemWhite;
+    }
     label {
         color: $deemWhite;
     }
