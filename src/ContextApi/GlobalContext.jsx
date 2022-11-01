@@ -22,6 +22,16 @@ const GlobalContextContainer = ({children}) => {
         setTheme((prev)=> (prev === "light"?"dark":"light"))
     }
 
+    // Function Get Time
+    const getDate = (date) => {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const day = date.getDate();
+      const houre = date.getHours();
+      const min = date.getMinutes();
+      const combineDate = year + "-" + month + "-" + day + " " + houre + ":" + min;
+      return combineDate + (houre <= 12 ? "am" : "pm");
+    } 
     // For Authentication
     const [userProfiles, setUserProfiles] = useState([]);
 
@@ -77,7 +87,7 @@ const GlobalContextContainer = ({children}) => {
      },[])
 
   return (
-    <GlobalContextProvider.Provider value={{theme, toggleTheme,signup, login, logout, resetpass, userProfiles }}>
+    <GlobalContextProvider.Provider value={{theme, toggleTheme,signup, login, logout, resetpass, userProfiles, getDate }}>
         {children}
     </GlobalContextProvider.Provider>
   )

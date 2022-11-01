@@ -10,4 +10,88 @@
             padding: 12px 0;
         }
     }
+    .singleBlog {
+        padding: 20px;
+        margin-bottom: 30px;
+        @extend %boxShadow;
+        img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+        h2 {
+            margin-bottom: 0;
+            @include h5 {
+                color: $titleColor;
+                text-transform: capitalize;
+                font-size: 22px;
+            }
+            .blogtype {
+                 display: inline-block;
+                 margin-left: 10px;
+                 padding: 2px 4px;
+                 border-radius: 4px;
+                 float:right;
+                 @include preHeader {
+                    background-color: $themeDeepDark;
+                    color: $deemWhite;
+                    font-size: 10px;
+                    font-weight: 600;
+                    
+                 }
+            }
+        }
+        .authorinfo {
+            margin-bottom: 0;
+            @include paragraphFont {
+                color: $primaryColorDark;
+                font-size: 14px;
+            }
+            span {
+                color: $paragraphColor;
+            }
+        }
+        .time,.exerpt {
+            margin-bottom: 0;
+            @include paragraphFont {
+                color: $primaryColorDark;
+                font-size: 14px;
+            }
+        }
+        .exerpt {
+            margin-top: 20px;
+            @include paragraphFont {
+                color: $titleColor;
+            }
+        }
+        button {
+            @extend %globalButton;
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+    @media only screen and (max-width: 992px) {
+        padding: 60px 0;
+        .btnGroup {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+// Theming CSS
+
+#dark.allBlog {
+    background-color: $themeLightDark;
+    h2, p, span {
+        color: $deemWhite;
+    }
+    .singleBlog {
+        background-color: $themeDeepDark;
+        .blogtype {
+            background-color: $primaryColor;
+        }
+    }
 }

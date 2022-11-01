@@ -14,6 +14,9 @@ import NewsLetterInfo from "../Components/Dashboard//NewsletterInfo";
 import BlogInfo from "../Components/Dashboard/BlogInfo";
 import UserInfo from "../Components/Dashboard/UserInfo";
 import Dashbord from '../Components/Dashboard/Dashbord';
+import InnerBlog from '../Components/InnerBlog';
+import ProfileInfo from '../Components/UserProfiles/ProfileInfo';
+import ProfileBlog from '../Components/UserProfiles/ProfileBlog';
 
 export default function Routers() {
   return (
@@ -22,13 +25,17 @@ export default function Routers() {
             <Route path="/" exact={true} element={<Home />}/>
             <Route path="/contact" element={<Contact />}/>
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<InnerBlog />} />
             <Route path="/addblog" element={<Addblog />} />
-            <Route path="/userprofile" element={<UserProfile />} />
+            <Route path="/userprofile" element={<UserProfile />}>
+                <Route path="myprofile" element={<ProfileInfo />}/>
+                <Route path="myblog" element={<ProfileBlog />}/>
+            </Route>
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgetpassword" element={<ForgotPassword />} />
             <Route path="/dashbord" element={<Dashbord />}>
-                <Route path="/dashbord/dashbordindex" element={<DashbordIndex />} />
+                <Route path="dashbordindex" element={<DashbordIndex />} />
                 <Route path="contactinfo" element={<ContactInfo />}/>
                 <Route path="newsletterinfo" element={<NewsLetterInfo />}/>
                 <Route path="bloginfo" element={<BlogInfo />}/>
