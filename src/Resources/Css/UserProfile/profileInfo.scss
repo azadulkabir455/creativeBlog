@@ -1,0 +1,12 @@
+@import "../global.scss";
+
+.singleUser {
+    button {
+        @extend %globalButton;
+        margin-top: 30px;
+    }
+}
+
+#dark.singleUser {
+    color: $deemWhite;
+}

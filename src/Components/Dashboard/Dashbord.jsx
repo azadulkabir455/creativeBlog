@@ -14,7 +14,6 @@ export default function Dashboard() {
           <Link to="/dashbord/dashbordindex"><BsArrowRightShort />Dashbord</Link>
           <Link to="/dashbord/userinfo"><BsArrowRightShort />UserInfo</Link>
           <Link to="/dashbord/contactinfo"><BsArrowRightShort />ContactInfo</Link>
-          <Link to="/dashbord/bloginfo"><BsArrowRightShort />BlogInfo</Link> 
           <Link to="/dashbord/newsletterinfo"><BsArrowRightShort />NewsLetter</Link> 
         </div>
         <div className="dashbordContent">

@@ -4,11 +4,13 @@ import GlobalFooter from "../GlobalWidgets/GlobalFooter/GlobalFooter"
 import OtherPageBanner from "../Components/Elements/OtherPageBanner"
 import {Link} from "react-router-dom";
 import useFetch from "../CustomHooks/useFetch";
+import {db} from "../firebase-config";
+import {doc, deleteDoc} from "firebase/firestore"
 import { GlobalContextProvider } from "../ContextApi/GlobalContext"
 import "../Resources/Css/blog.scss"
 
 export default function Blog() {
-  const { theme, getDate } = useContext(GlobalContextProvider)
+  const { theme, getDate, userProfiles } = useContext(GlobalContextProvider)
   const [data] = useFetch("blog")
   const [blogs, setBlogs] = useState([]);
 
@@ -30,6 +32,16 @@ export default function Blog() {
   const personalBlog = () => {
     const filterBlog = data.filter((item) => item.blogType === "personal");
     setBlogs(filterBlog)
+  }
+  const deleteBlog = (id) => {
+    if(window.confirm("Are you sure to delete blog")){
+      const userDoc = doc(db,"blog", id);
+      deleteDoc(userDoc).then(()=> {
+        console.log("Blog delete successfully");
+      }).catch((error) => {
+        console.log(error.message)
+      })
+    }
   }
   return (
     <>
@@ -60,6 +72,7 @@ export default function Blog() {
                     </div>
                     <div className="card-footer">
                       <button><Link to={blog.id}>Read More</Link></button>
+                      {userProfiles.uid === blog.authorInfo.id?<button onClick={() => deleteBlog(blog.id)} className="delete">Delete Blog</button>:''}
                     </div>
                   </div>
                 )

@@ -39,7 +39,7 @@ const GlobalContextContainer = ({children}) => {
     const signup = async (email, password, data) => {
       await createUserWithEmailAndPassword(auth, email, password).then(async(authenticateUser)=> {
         const ref = doc(db, "userProfiles",authenticateUser.user.uid);
-        await setDoc(ref, {data}).then(() => {
+        await setDoc(ref, {...data}).then(() => {
           console.log("User data succesfully added and signup");
         }).catch((error) => {
           console.log(error.message)

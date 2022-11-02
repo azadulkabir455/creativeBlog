@@ -1,0 +1,46 @@
+@import "../global.scss";
+
+.userProfile {
+    padding: 120px 0;
+    .profileLink {
+        @extend %boxShadow;
+        padding: 40px 20px;
+        border-radius: 10px;
+        a {
+            display: block;
+            @include menuText {
+                text-decoration: none;
+                color: $primaryColorDark;
+                text-transform: uppercase;
+            }
+            margin-bottom: 10px;
+            @extend %transition;
+            &:hover {
+                color: $paragraphColor;
+            }
+        }
+    }
+    .profileContent {
+        @extend %boxShadow;
+        padding: 40px 20px;
+        border-radius: 10px;
+    }
+    @media only screen and (max-width: 992px) {
+            padding: 60px 0;
+            .custom {
+                margin-bottom: 40px;
+            }
+    }
+}
+
+#dark.userProfile {
+    background-color: $themeLightDark;
+    .profileLink, .profileContent {
+        background-color: $themeDeepDark;
+    }
+    .profileLink {
+        a:hover {
+            color: $deemWhite;
+        }
+    }
+}

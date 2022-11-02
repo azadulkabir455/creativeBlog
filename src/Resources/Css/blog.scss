@@ -72,6 +72,9 @@
                 color: inherit;
             }
         }
+        button.delete {
+            margin-left: 10px;
+        }
     }
     @media only screen and (max-width: 992px) {
         padding: 60px 0;

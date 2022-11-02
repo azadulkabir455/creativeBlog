@@ -40,7 +40,7 @@ export default function GlobalHeader() {
                                                 User
                                             </a>
                                             <ul className="dropdown-menu">
-                                                <li><Link className='dropdown-item' to="/userprofile">User Profile</Link></li>
+                                                <li><Link className='dropdown-item' to="/userprofile/myprofile">User Profile</Link></li>
                                                 <li><hr className="dropdown-divider" /></li>
                                                 <li><Link className='dropdown-item' onClick={logout}>Logout</Link></li>
                                             </ul>

@@ -11,7 +11,6 @@ import ForgotPassword from '../Components/Authentication/ForgotPassword';
 import DashbordIndex from '../Components/Dashboard/DashbordIndex';
 import ContactInfo from "../Components/Dashboard/ContactInfo";
 import NewsLetterInfo from "../Components/Dashboard//NewsletterInfo";
-import BlogInfo from "../Components/Dashboard/BlogInfo";
 import UserInfo from "../Components/Dashboard/UserInfo";
 import Dashbord from '../Components/Dashboard/Dashbord';
 import InnerBlog from '../Components/InnerBlog';
@@ -26,6 +25,7 @@ export default function Routers() {
             <Route path="/contact" element={<Contact />}/>
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<InnerBlog />} />
+            <Route path="/userprofile/myblog/:id" element={<InnerBlog />} />
             <Route path="/addblog" element={<Addblog />} />
             <Route path="/userprofile" element={<UserProfile />}>
                 <Route path="myprofile" element={<ProfileInfo />}/>
@@ -38,7 +38,6 @@ export default function Routers() {
                 <Route path="dashbordindex" element={<DashbordIndex />} />
                 <Route path="contactinfo" element={<ContactInfo />}/>
                 <Route path="newsletterinfo" element={<NewsLetterInfo />}/>
-                <Route path="bloginfo" element={<BlogInfo />}/>
                 <Route path="userinfo" element={<UserInfo />}/>
             </Route>
         </Routes>
