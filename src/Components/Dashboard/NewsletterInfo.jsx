@@ -1,14 +1,16 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import useFetch from '../../CustomHooks/useFetch'
 import useUpdate from '../../CustomHooks/useUpdate';
 import {db} from "../../firebase-config"
 import {doc, deleteDoc} from "firebase/firestore"
+import {GlobalContextProvider} from "../../ContextApi/GlobalContext"
 
 export default function NewsletterInfo() {
   const [email, setEmail] = useState("");
   const [emailId, setEmailId] = useState();
   const [data] = useFetch("newsletter");
   const [updateData] = useUpdate("newsletter", emailId, {email})
+  const {theme} = useContext(GlobalContextProvider)
 
   const fromHandler = (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ export default function NewsletterInfo() {
   return (
     <>
       <h1>NewsLetter Infos</h1>
-      <table className="table table-striped">
+      <table className="table table-striped newsletterTable" id={theme}>
         <thead>
           <tr>
             <th scope="col">Email</th>

@@ -30,13 +30,11 @@ export default function Addblog() {
     imgUrl,
     timestamp: serverTimestamp(),
     authorInfo: {
-      name: currentUserDatas.data && currentUserDatas.data.name,
+      name: currentUserDatas && currentUserDatas.name,
       email: userProfiles.email,
       id: userProfiles.uid
     }
   }
-  console.log(currentUserDatas.data)
-  console.log(combinedData)
 
 
   const [addData] = useCreate("blog", combinedData)

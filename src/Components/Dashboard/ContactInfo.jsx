@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import useFetch from '../../CustomHooks/useFetch'
 import useUpdate from "../../CustomHooks/useUpdate"
 import {db} from "../../firebase-config";
 import {doc, deleteDoc} from "firebase/firestore"
+import {GlobalContextProvider} from "../../ContextApi/GlobalContext"
 
 export default function ContactInfo() {
   const [userdata, setUserData] = useState([]);
@@ -12,6 +13,7 @@ export default function ContactInfo() {
   const combineData = {...userdata, role, message}
   const [data] = useFetch("contactInfo");
   const [updateData] = useUpdate("contactInfo",contactId, combineData);
+  const {theme} = useContext(GlobalContextProvider)
 
 
   const fromHandler = (e) => {
@@ -50,7 +52,7 @@ export default function ContactInfo() {
 
       {
         data.map((contact) =>
-          <div className="card" key={contact.id}>
+          <div className="card contactCard" key={contact.id} id={theme}>
             <div className="card-header">
               <h4>{contact.name} <span>{contact.role}</span></h4>
               <span>Email: {contact.email}</span> <span>Phone: {contact.phone}</span>

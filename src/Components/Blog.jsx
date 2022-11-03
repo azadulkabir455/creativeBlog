@@ -22,7 +22,7 @@ export default function Blog() {
     setBlogs(filterBlog);
   }
   const teachnologyBlog = () => {
-    const filterBlog = data.filter((item) => item.blogType === "teachnology");
+    const filterBlog = data.filter((item) => item.blogType === "technology");
     setBlogs(filterBlog)
   }
   const travelBlog = () => {
