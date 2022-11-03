@@ -43,6 +43,13 @@ export default function Addblog() {
   const formHandler = (e) => {
     e.preventDefault();
     addData();
+    setBlogTitle("")
+    setBlogType("select")
+    setBlogExerpt("Write your excerpt")
+    setBlog(null)
+    setImgUrl(null)
+    let form = document.getElementById("from")
+    form.reset();
   }
   useEffect(() => {
     userProfiles.uid && currentUserData();
@@ -94,7 +101,7 @@ export default function Addblog() {
           <div className="row">
             <div className="col">
               {/* <h1>Add your blog</h1> */}
-              <form onSubmit={formHandler}>
+              <form onSubmit={formHandler} id="from">
                 <div className="row">
                   <div className="col-12 col-lg-5 mt-4">
                     <label htmlFor="title" className="form-label">Write your blog title</label>

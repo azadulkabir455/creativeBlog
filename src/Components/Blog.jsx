@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import GlobalHeader from "../GlobalWidgets/GlobalHeader/GlobalHeader"
 import GlobalFooter from "../GlobalWidgets/GlobalFooter/GlobalFooter"
 import OtherPageBanner from "../Components/Elements/OtherPageBanner"
@@ -13,6 +13,10 @@ export default function Blog() {
   const { theme, getDate, userProfiles } = useContext(GlobalContextProvider)
   const [data] = useFetch("blog")
   const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    setBlogs(data);
+  },[data])
 
   const allItem = () => {
     setBlogs(data)

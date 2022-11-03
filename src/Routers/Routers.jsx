@@ -26,6 +26,7 @@ export default function Routers() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<InnerBlog />} />
             <Route path="/userprofile/myblog/:id" element={<InnerBlog />} />
+            <Route path="/:id" element={<InnerBlog />} />
             <Route path="/addblog" element={<Addblog />} />
             <Route path="/userprofile" element={<UserProfile />}>
                 <Route path="myprofile" element={<ProfileInfo />}/>

@@ -19,6 +19,11 @@ export default function Contact() {
   const fromHandler = (e) => {
     e.preventDefault();
     addData();
+    setData("")
+    setRole("role")
+    setMessage("Write your message")
+    let form = document.getElementById("form");
+    form.reset();
   }
   const inputHandle = (e) => {
     const name = e.target.name;
@@ -33,7 +38,7 @@ export default function Contact() {
         <div className="container-lg">
           <h2>Contact with us</h2>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim neque eius deserunt necessitatibus velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, corporis.</p>
-          <form action="#" onSubmit={fromHandler}>
+          <form action="#" onSubmit={fromHandler} id="form">
             <div className="row g-4">
               <div className="col-12 col-lg-4 offset-lg-2">
                 <div className="mb-3">

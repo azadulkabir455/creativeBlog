@@ -1,5 +1,6 @@
 import React,{createContext,useState, useEffect} from 'react'
 import {auth, db} from "../firebase-config";
+import { useNavigate } from 'react-router-dom';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,7 +15,7 @@ import {
 
 const GlobalContextProvider = createContext();
 const GlobalContextContainer = ({children}) => {
-
+    const navigate = useNavigate()
 
     //For themeing
     const [theme, setTheme] = useState("light");
@@ -62,6 +63,7 @@ const GlobalContextContainer = ({children}) => {
     const logout = async () => {
       await signOut(auth).then(() => {
         console.log("Signout succesfully")
+        navigate("/")
       }).catch((error) => {
         console.log(error.message)
       })
